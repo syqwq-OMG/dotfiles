@@ -95,6 +95,8 @@ export http_proxy=http://127.0.0.1:10808
 export https_proxy=http://127.0.0.1:10808
 export EDITOR="nvim"
 export VISUAL="nvim"
+export CARGO_NET_GIT_FETCH_WITH_CLI=true
+
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8

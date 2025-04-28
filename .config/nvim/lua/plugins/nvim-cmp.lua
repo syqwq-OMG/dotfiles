@@ -22,14 +22,14 @@ return {
                     end
                 end, { "i", "s" }),
                 -- ["<S-Tab>"] = cmp.mapping(function(fallback)
-                ["<C-h>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_prev_item()
-                    else
-                        fallback()
-                    end
-                end, { "i", "s" }),
-                ["<C-p>"] = nil,
+                -- ["<C-h>"] = cmp.mapping(function(fallback)
+                --     if cmp.visible() then
+                --         cmp.select_prev_item()
+                --     else
+                --         fallback()
+                --     end
+                -- end, { "i", "s" }),
+                -- ["<C-p>"] = nil,
             })
             return opts
         end,
