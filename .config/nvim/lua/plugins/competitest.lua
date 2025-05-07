@@ -89,15 +89,22 @@ return {
             compile_directory = ".",
             compile_command = {
                 c = { exec = "gcc", args = { "-Wall", "$(FNAME)", "-o", "$(FNOEXT)" } },
-                cpp = { exec = "g++", args = { "-Wall", "--std=c++17", "$(FNAME)", "-o", "./.exec/$(FNOEXT)" } },
+                cpp = {
+                    exec = "sh",
+                    args = {
+                        "-c",
+                        "mkdir -p .exec && g++ -Wall --std=c++17 $(FNAME) -o .exec/$(FNOEXT)",
+                    },
+                },
+                -- cpp = { exec = "g++", args = { "-Wall", "--std=c++17", "$(FNAME)", "-o", "./.exec/$(FNOEXT)" } },
                 rust = { exec = "rustc", args = { "$(FNAME)" } },
                 java = { exec = "javac", args = { "$(FNAME)" } },
             },
             -- running_directory = ".",
-            running_directory = "./.exec/",
+            running_directory = ".",
             run_command = {
-                c = { exec = "./$(FNOEXT)" },
-                cpp = { exec = "./$(FNOEXT)" },
+                c = { exec = "./$.exec/(FNOEXT)" },
+                cpp = { exec = "./.exec/$(FNOEXT)" },
                 rust = { exec = "./$(FNOEXT)" },
                 python = { exec = "python", args = { "$(FNAME)" } },
                 java = { exec = "java", args = { "$(FNOEXT)" } },
