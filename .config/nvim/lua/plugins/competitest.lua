@@ -73,8 +73,8 @@ return {
                 total_width = 0.3,
                 vertical_layout = {
                     { 1, "tc" },
-                    { 1, { { 1, "so" }, { 1, "eo" } } },
                     { 1, { { 1, "si" }, { 1, "se" } } },
+                    { 1, { { 1, "so" }, { 1, "eo" } } },
                 },
                 total_height = 0.4,
                 horizontal_layout = {
@@ -128,23 +128,33 @@ return {
             -- received_problems_path = "$(CWD)/$(PROBLEM).$(FEXT)",
             received_problems_path = function(task, file_extension)
                 local cwd = vim.fn.getcwd()
+                -- acwing
                 if string.match(task.group, "AcWing") then
-                    local problem_id = string.match(task.url, "https://www.acwing.com/problem/content/(%d+)/")
+                    local problem_id = string.match(task.url, "www.acwing.com/problem/content/(%d+)/")
                     return string.format("%s/acwing/%s.%s", cwd, problem_id, file_extension)
                 end
 
+                -- codeforces
                 if string.match(task.group, "Codeforces") then
                     if string.match(task.url, "contest") then
                         local contest_id, problem_id =
-                            string.match(task.url, "https://codeforces.com/contest/([0-9]*)/problem/([A-Z0-9]+)")
+                            string.match(task.url, "codeforces.com/contest/([0-9]*)/problem/([A-Z0-9]+)")
                         return string.format("%s/codeforces/%s/%s.%s", cwd, contest_id, problem_id, file_extension)
                     else
                         local contest_id, problem_id =
-                            string.match(task.url, "https://codeforces.com/problemset/problem/([0-9]*)/([A-Z0-9]+)")
+                            string.match(task.url, "codeforces.com/problemset/problem/([0-9]*)/([A-Z0-9]+)")
                         return string.format("%s/codeforces/%s.%s", cwd, contest_id .. problem_id, file_extension)
                     end
                 end
-                return string.format("%s/others/%s.%s", cwd, task.name, file_extension)
+
+                -- luogu
+                if string.match(task.group, "Luogu") then
+                    local problem_id = string.match(task.url, "luogu.com.cn/problem/([%w_]+)")
+                    return string.format("%s/luogu/%s.%s", cwd, problem_id, file_extension)
+                end
+
+                -- others
+                return string.format("%s/others/%s.%s", cwd, (string.gsub(task.name, "%s+", "-")), file_extension)
             end,
             received_problems_prompt_path = true,
             received_contests_directory = "$(CWD)",

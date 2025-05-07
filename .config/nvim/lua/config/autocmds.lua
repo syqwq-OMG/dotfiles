@@ -16,3 +16,34 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt_local.expandtab = true
     end,
 })
+
+---- 在Neovim配置中先定义高亮组（放在autocmd之前）
+vim.cmd([[
+  highlight! CompetiTestTitle guibg=NONE guifg=#88C0D0
+  highlight! link WinBar CompetiTestTitle
+  highlight! link StatusLine CompetiTestTitle
+]])
+
+vim.api.nvim_create_autocmd({ "BufAdd", "BufWinEnter" }, {
+    pattern = "*",
+    callback = function(args)
+        vim.schedule(function()
+            local buf = args.buf
+            if vim.api.nvim_buf_is_valid(buf) then
+                local success, title = pcall(vim.api.nvim_buf_get_var, buf, "competitest_title")
+                if success and title ~= "" then
+                    local wins = vim.fn.win_findbuf(buf)
+                    for _, win in ipairs(wins) do
+                        if vim.api.nvim_win_is_valid(win) then
+                            -- 推荐使用winbar（更现代的方式）
+                            vim.wo[win].winbar = "%#CompetiTestTitle#%{getbufvar(bufnr(), 'competitest_title', '')}%*"
+
+                            -- 或者使用statusline（旧版兼容）
+                            -- vim.wo[win].statusline = "%#CompetiTestTitle#%{getbufvar(bufnr(), 'competitest_title', '')}%*"
+                        end
+                    end
+                end
+            end
+        end)
+    end,
+})
