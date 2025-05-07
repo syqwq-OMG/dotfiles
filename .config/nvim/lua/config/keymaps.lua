@@ -17,6 +17,5 @@ map("t", "<C-[>", "<Esc>", opt)
 map("n", "<CR>", "o<Esc>", opt)
 map("n", "<S-CR>", "O<Esc>", opt)
 
-vim.keymap.set("n", "<C-a>", "ggVG", opt)
 -- map("n", "<C-S-Left>", ":vertical resize -2<CR>", opt)
 -- map("n", "<C-S-Right>", ":vertical resize +2<CR>", opt)
