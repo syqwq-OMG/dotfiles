@@ -17,6 +17,21 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
+-- Disable format on save for C++ files
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "cpp",
+    callback = function()
+        vim.b.autoformat = false -- Disable autoformat for C++
+    end,
+})
+
+--------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
+-- set the title for competitve programming
+local use_split = true
+if not use_split then
+    return
+end
 ---- 在Neovim配置中先定义高亮组（放在autocmd之前）
 vim.cmd([[
   highlight! CompetiTestTitle guibg=NONE guifg=#88C0D0

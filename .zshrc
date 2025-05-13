@@ -130,6 +130,7 @@ alias vi="nvim"
 alias vim="nvim"
 alias ls="eza --color=always --long --git --icons=always"
 alias cf="nvim ~/dotfiles/"
+alias python="python3"
 
 # le 3  show the 3 level files in the current directory
 le() {

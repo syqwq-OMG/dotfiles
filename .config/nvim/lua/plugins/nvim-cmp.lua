@@ -2,9 +2,9 @@
 -- use ctrl+n to select_next_item
 -- use ctrl+h to select_prev_item
 
--- if true then
---     return {}
--- end
+if true then
+    return {}
+end
 
 return {
     {
