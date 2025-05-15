@@ -123,7 +123,8 @@ return {
             testcases_input_file_format = "$(FNOEXT)_input$(TCNUM).txt",
             testcases_output_file_format = "$(FNOEXT)_output$(TCNUM).txt",
 
-            companion_port = 27121,
+            -- companion_port = 27121,
+            companion_port = 10045,
             receive_print_message = true,
             start_receiving_persistently_on_setup = false,
             -- template_file = false,
