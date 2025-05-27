@@ -18,7 +18,10 @@ return {
         opts.formatters = {
             injected = { options = { ignore_errors = true } },
             clang_format = {
-                prepend_args = { "--style={BasedOnStyle: LLVM, IndentWidth: 4, TabWidth: 4}" },
+                -- prepend_args = { "--style={BasedOnStyle: LLVM, IndentWidth: 4, TabWidth: 4, ColumnLimit: 0}" },
+                -- prepend_args = { "--style={BasedOnStyle: LLVM, IndentWidth: 4, TabWidth: 4}" },
+                -- prepend_args = { "--style={BasedOnStyle: Google, IndentWidth: 4, TabWidth: 4, ColumnLimit: 0}" },
+                prepend_args = { "--style=file:/home/syqwq/.config/nvim/lua/config/.clang-format" },
             },
             prettier = {
                 -- Add Prettier configuration options here
