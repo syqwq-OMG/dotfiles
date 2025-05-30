@@ -18,13 +18,13 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Disable format on save for C++ files
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "cpp",
-    callback = function()
-        vim.b.autoformat = false -- Disable autoformat for C++
-    end,
-})
-
+-- vim.api.nvim_create_autocmd("FileType", {
+--     pattern = "cpp",
+--     callback = function()
+--         vim.b.autoformat = false -- Disable autoformat for C++
+--     end,
+-- })
+--
 --------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------
 -- set the title for competitve programming

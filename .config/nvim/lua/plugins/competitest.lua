@@ -34,8 +34,8 @@ return {
                 },
             },
             runner_ui = {
-                interface = "split",
-                -- interface = "popup",
+                -- interface = "split",
+                interface = "popup",
                 selector_show_nu = true,
                 selector_show_rnu = false,
                 show_nu = true,
@@ -53,6 +53,8 @@ return {
                     close = { "q", "Q" },
                 },
                 viewer = {
+                    open_when_compilation_fails = true,
+                    -- open_when_compilation_fails = false,
                     width = 0.5,
                     height = 0.5,
                     show_nu = true,
@@ -129,7 +131,7 @@ return {
             start_receiving_persistently_on_setup = false,
             -- template_file = false,
             template_file = {
-                cpp = "~/workspace/oi/template/template.cpp",
+                cpp = "./template/template.cpp",
             },
             -- evaluate_template_modifiers = false,
             evaluate_template_modifiers = true,
