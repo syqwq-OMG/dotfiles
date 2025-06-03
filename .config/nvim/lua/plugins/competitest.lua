@@ -162,6 +162,13 @@ return {
                     return string.format("%s/luogu/%s.%s", cwd, problem_id, file_extension)
                 end
 
+                -- poj
+                if string.match(task.group, "POJ") then
+                    -- local problem_id = string.match(task.url, "poj.org/problem?id=([A-Z0-9]+)")
+                    local problem_id = string.match(task.url, "id=([A-Z0-9]+)")
+                    return string.format("%s/poj/%s.%s", cwd, problem_id, file_extension)
+                end
+
                 -- others
                 return string.format("%s/others/%s.%s", cwd, (string.gsub(task.name, "%s+", "-")), file_extension)
             end,
