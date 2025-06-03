@@ -17,6 +17,7 @@ return {
             enabled = true,
             exclude = { "cpp" }, -- filetypes for which you don't want to enable inlay hints
         }
+
         return opts
     end,
 }

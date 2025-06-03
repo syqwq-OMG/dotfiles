@@ -34,3 +34,11 @@ vim.o.cmdheight = 1
 vim.cmd([[
   cnoreabbrev <expr> ctt getcmdtype() == ':' && getcmdline() ==# 'ctt' ? 'CompetiTest' : 'ctt'
 ]])
+
+vim.cmd([[
+  cnoreabbrev <expr> crr getcmdtype() == ':' && getcmdline() ==# 'crr' ? 'CompetiTest run' : 'crr'
+]])
+
+vim.cmd([[
+  cnoreabbrev <expr> crp getcmdtype() == ':' && getcmdline() ==# 'crp' ? 'CompetiTest receive persistently' : 'crp'
+]])
