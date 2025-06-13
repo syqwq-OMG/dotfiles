@@ -5,7 +5,12 @@ return {
         require("competitest").setup({
             local_config_file_name = ".competitest.lua",
 
+            -- floating_border = { style = "rounded" },
             floating_border = "rounded",
+            -- floating_border = "solid",
+            -- floating_border = "double",
+            -- floating_border = "default",
+            -- floating_border = "single",
             floating_border_highlight = "FloatBorder",
             picker_ui = {
                 width = 0.2,
@@ -14,7 +19,7 @@ return {
                     focus_next = { "j", "<down>", "<Tab>" },
                     focus_prev = { "k", "<up>", "<S-Tab>" },
                     close = { "<esc>", "<C-c>", "q", "Q" },
-                    submit = "<cr>",
+                    submit = { "<cr>" },
                 },
             },
             editor_ui = {
@@ -57,6 +62,7 @@ return {
                     height = 0.5,
                     show_nu = true,
                     show_rnu = false,
+                    open_when_compilation_fails = true,
                 },
             },
             popup_ui = {
@@ -129,8 +135,8 @@ return {
             start_receiving_persistently_on_setup = false,
             -- template_file = false,
             template_file = {
-                -- cpp = "~/workspace/oi/template/template.cpp",
-                cpp = "~/syqwq-workspace/oi/template/template.cpp",
+                cpp = "~/workspace/oi/template/template.cpp",
+                -- cpp = "~/syqwq-workspace/oi/template/template.cpp",
             },
             -- evaluate_template_modifiers = false,
             evaluate_template_modifiers = true,
@@ -142,6 +148,9 @@ return {
                 -- acwing
                 if string.match(task.group, "AcWing") then
                     local problem_id = string.match(task.url, "www.acwing.com/problem/content/(%d+)/")
+                    if problem_id == nil then
+                        problem_id = string.match(task.url, "www.acwing.com/problem/content/description/(%d+)/")
+                    end
                     return string.format("%s/acwing/%s.%s", cwd, problem_id, file_extension)
                 end
 
