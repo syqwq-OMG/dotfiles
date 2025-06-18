@@ -6,6 +6,7 @@ return {
             -- colorscheme = "solarized-osaka",
             -- colorscheme = "catppuccin-mocha",
             colorscheme = "kanagawa-wave",
+            -- colorscheme = "gruber-darker",
         },
     },
 }

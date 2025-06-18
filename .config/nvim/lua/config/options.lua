@@ -31,6 +31,8 @@ vim.g.lazyvim_prettier_needs_config = true
 -- 命令行高为1，提供足够的显示空间
 vim.o.cmdheight = 1
 
+vim.g.lazyvim_blink_main = false
+
 vim.cmd([[
   cnoreabbrev <expr> ctt getcmdtype() == ':' && getcmdline() ==# 'ctt' ? 'CompetiTest' : 'ctt'
 ]])
